@@ -1,41 +1,33 @@
 {
-  "name": "skynet",
-  "description": "communications platform and api for iot",
-  "version": "0.0.1-35",
-  "author": "Chris Matthieu",
-  "private": true,
-  "engines": {
-    "node": ">=0.6"
+  "name": "meshblu-server",
+  "version": "5.3.3",
+  "description": "A bundled version of meshblu-core",
+  "main": "dist/meshblu-core-runner.js",
+  "repository": {
+    "url": "git@github.com:octoblu/meshblu.git",
+    "type": "git"
   },
-  "dependencies": {
-    "mongojs": "*",
-    "mosca": "*",
-    "redis": "~0.10.1",
-    "socket.io": "0.9.16",
-    "restify": "*",
-    "node-uuid": "*",
-    "node-static": "*",
-    "mqtt": "*",
-    "JSONStream": "*",
-    "commander": "*",
-    "request": "*",
-    "tokenthrottle": "*",
-    "lodash": "*",
-    "elasticsearch": "*",
-    "moment": "*",
-    "coap": "^0.6.1",
-    "qs": "^0.6.6",
-    "when": "^3.1.0",
-    "nedb": "~0.10.4"
+  "bin": {
+    "meshblu": "./command.js"
   },
-  "subdomain": "skynet",
-  "domains": [
-    "e2e.io",
-    "skynet.im",
-    "skynetim.com",
-    "meshines.com"
-  ],
   "scripts": {
-    "start": "node server.js"
+    "start": "node command.js",
+    "start:profile": "node --trace-sync-io command.js",
+    "test": "./test-start.sh --test-start",
+    "build": "coffee --compile --output dist/ --map src/*.coffee"
+  },
+  "author": "Octoblu, Inc <npm@octoblu.com>",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.5.0",
+    "coffee-script": "^1.12.7",
+    "dashdash": "^1.14.0",
+    "debug": "^3.0.1",
+    "meshblu-core-dispatcher": "^20.1.2",
+    "meshblu-core-firehose-socket.io": "^2.0.0",
+    "meshblu-core-protocol-adapter-http": "^6.1.0",
+    "meshblu-core-worker-webhook": "^4.1.4",
+    "sigterm-handler": "^2.0.0",
+    "uuid": "^3.1.0"
   }
 }
